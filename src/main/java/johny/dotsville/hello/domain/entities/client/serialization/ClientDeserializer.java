@@ -7,24 +7,35 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import johny.dotsville.hello.domain.entities.client.Client;
+import johny.dotsville.hello.domain.utils.exceptions.DataException;
+import johny.dotsville.hello.domain.utils.exceptions.TechException;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class ClientDeserializer extends JsonDeserializer<Client> {
-
     @Override
     public Client deserialize(JsonParser parser, DeserializationContext deserializationContext)
             throws IOException, JacksonException {
-        ObjectCodec codec = parser.getCodec();
-        JsonNode node = codec.readTree(parser);
+        try {
+            ObjectCodec codec = parser.getCodec();
+            JsonNode node = codec.readTree(parser);
 
-        String name = node.get("name").asText();
-        String card = node.get("card").asText();
+            String name = node.get("name").asText();
+            String card = node.get("card").asText();
 
-        Client client = new Client();
-        client.setName(name);
-        client.setCard(card);
+            String sBirth = node.get("birth").asText();
+            Date birth = Date.valueOf(LocalDate.parse(sBirth));
 
-        return client;
+            Client client = new Client();
+            client.setName(name);
+            client.setCard(card);
+            client.setBirth(birth);
+
+            return client;
+        } catch (Exception ex) {
+            throw new TechException("Не удалось сформировать объект Client");
+        }
     }
 }
