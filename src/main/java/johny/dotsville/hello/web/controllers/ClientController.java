@@ -29,10 +29,12 @@ public class EveryController {
 
     @PostMapping("/client/new")
     public Client createNewClient(@RequestBody Client client) {
+        //clientRepo.save(client);
+
         Client newClient = new Client();
         newClient.setName("new " + client.getName());
         newClient.setCard("new " + client.getCard());
-        newClient.setBirth(Date.valueOf(LocalDate.now()));
+        newClient.setBirth(client.getBirth());
 
         return newClient;
     }
