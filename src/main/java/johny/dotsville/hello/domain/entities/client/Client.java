@@ -1,6 +1,10 @@
 package johny.dotsville.hello.domain.entities.client;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import johny.dotsville.hello.domain.entities.AbstractEntity;
+import johny.dotsville.hello.domain.entities.client.serialization.ClientDeserializer;
+import johny.dotsville.hello.domain.entities.client.serialization.ClientSerializer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +20,12 @@ import java.sql.Date;
 @Entity
 @Table(name = "client", schema = "bl")
 @Getter @Setter
+@JsonDeserialize(using = ClientDeserializer.class)
+@JsonSerialize(using = ClientSerializer.class)
 public class Client extends AbstractEntity {
     @Id
     @Column(name = "id", insertable = false, updatable = false)
-    @SequenceGenerator(name = "client_id_gen", sequenceName = "client_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "client_id_gen", schema = "bl", sequenceName = "client_id_seq", allocationSize = 1)
     @GeneratedValue(generator = "client_id_gen", strategy = GenerationType.SEQUENCE)
     private long id;
 

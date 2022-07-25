@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class City extends AbstractEntity {
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name = "city_id_gen", sequenceName = "city_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "city_id_gen", schema = "bl", sequenceName = "city_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "city_id_gen")
     private long id;
 
