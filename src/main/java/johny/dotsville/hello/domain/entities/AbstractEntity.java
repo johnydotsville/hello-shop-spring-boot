@@ -1,4 +1,4 @@
-package johny.dotsville.hello.domain.city;
+package johny.dotsville.hello.domain.entities;
 
 import lombok.Getter;
 import lombok.Setter;
