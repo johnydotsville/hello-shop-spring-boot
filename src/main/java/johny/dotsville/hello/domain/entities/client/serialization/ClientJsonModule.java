@@ -8,5 +8,6 @@ import org.springframework.stereotype.Service;
 public class ClientJsonModule extends SimpleModule {
     public ClientJsonModule() {
         this.addSerializer(Client.class, new ClientSerializer());
+        this.addDeserializer(Client.class, new ClientDeserializer());
     }
 }

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "city", schema = "bl")
@@ -24,6 +25,19 @@ public class City extends AbstractEntity {
 
     @Column(name = "name")
     private String name;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj))
+            return false;
+        var city = (City) obj;
+        return Objects.equals(id, city.id);
+    }
 
     @Override
     public String toString() {

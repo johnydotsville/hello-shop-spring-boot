@@ -23,4 +23,13 @@ public abstract class AbstractEntity {
     @org.hibernate.annotations.Generated(
             value = org.hibernate.annotations.GenerationTime.INSERT)
     private boolean markDeleted;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || obj.getClass() != this.getClass())
+            return false;
+        return true;
+    }
 }
