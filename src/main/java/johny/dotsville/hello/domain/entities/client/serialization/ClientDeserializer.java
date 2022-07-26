@@ -35,7 +35,7 @@ public class ClientDeserializer extends JsonDeserializer<Client> {
 
             return client;
         } catch (Exception ex) {
-            throw new TechException("Не удалось сформировать объект Client");
+            throw new TechException("Не удалось сформировать объект " + Client.class.getName());
         }
     }
 }
