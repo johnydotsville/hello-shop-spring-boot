@@ -2,6 +2,7 @@ package johny.dotsville.hello.web.controllers;
 
 import johny.dotsville.hello.core.context.client.entities.Client;
 import johny.dotsville.hello.core.context.client.repo.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,8 +13,9 @@ import java.util.Optional;
 
 @RestController
 public class ClientController {
-    private ClientRepository clientRepo;
+    private final ClientRepository clientRepo;
 
+    @Autowired
     public ClientController(ClientRepository clientRepo) {
         this.clientRepo = clientRepo;
     }

@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
 public class GoodsController {
     private static final int defaultPageSize = 25;
 
-    private GoodsRepository goodsRepo;
+    private final GoodsRepository goodsRepo;
 
     @Autowired
     public GoodsController(GoodsRepository goodsRepo) {
@@ -43,5 +45,10 @@ public class GoodsController {
         return goods.stream()
                 .map(g -> Goods.toDto(g))
                 .collect(Collectors.toList());
+    }
+
+    @PostMapping("/goods/feature/add")
+    public String addFeature() {
+        return "Мы попробуем добавить характеристику";
     }
 }

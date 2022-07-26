@@ -24,7 +24,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "goods", schema = "bl")
-@Getter @Setter
 public class Goods extends AbstractEntity {
     @Id
     @Column(name = "id", insertable = false, updatable = false)
@@ -45,6 +44,29 @@ public class Goods extends AbstractEntity {
     // TODO: поискать, возможно ли из БД извлекать в словарь и обратно из словаря сохранять как строку
     private String customAttributes;
 
+    public long getId() {
+        return this.id;
+    }
+    public String getName() {
+        return this.name;
+    }
+    public String getDescription() {
+        return this.description;
+    }
+    public String getCustomAttributes() {
+        return this.customAttributes;
+    }
+    public List<FeatureDtoGet> getFeatures() {
+        var features = new ArrayList<FeatureDtoGet>(goodsFeature.size());
+        for (GoodsFeature gf: this.goodsFeature) {
+            var feature = new FeatureDtoGet();
+            feature.setName(gf.getFeature().getName());
+            feature.setValue(gf.getValue());
+            features.add(feature);
+        }
+        return features;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, name, description, customAttributes);
@@ -64,15 +86,7 @@ public class Goods extends AbstractEntity {
         dto.setName(goods.name);
         dto.setDescription(goods.description);
         dto.setCustomAttributes(goods.customAttributes);
-
-        List<FeatureDtoGet> features = new ArrayList<>(goods.getGoodsFeature().size());
-        for (GoodsFeature gf : goods.getGoodsFeature()) {
-            FeatureDtoGet fdto = new FeatureDtoGet();
-            fdto.setName(gf.getFeature().getName());
-            fdto.setValue(gf.getValue());
-            features.add(fdto);
-        }
-        dto.setFeatures(features);
+        dto.setFeatures(goods.getFeatures());
         return dto;
     }
 

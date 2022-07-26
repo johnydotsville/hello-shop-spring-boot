@@ -2,6 +2,7 @@ package johny.dotsville.hello.web.controllers;
 
 import johny.dotsville.hello.core.context.city.entities.City;
 import johny.dotsville.hello.core.context.city.repo.CityRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,8 @@ import java.util.Optional;
 @RestController
 public class CityController {
     private final CityRepository cityRepo;
+
+    @Autowired
     public CityController(CityRepository actorRepo) {
         this.cityRepo = actorRepo;
     }
