@@ -1,6 +1,8 @@
 package johny.dotsville.hello.core.context.goods.entities;
 
-import johny.dotsville.hello.core.context.common.AbstractEntity;
+import johny.dotsville.hello.core.common.entities.AbstractEntity;
+import johny.dotsville.hello.core.context.goods.dto.FeatureDtoGet;
+import johny.dotsville.hello.core.context.goods.dto.GoodsDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -51,5 +55,22 @@ public class Goods extends AbstractEntity {
             return false;
         Goods goods = (Goods) obj;
         return Objects.equals(id, goods.id);
+    }
+
+    public GoodsDto toDto() {
+        GoodsDto dto = new GoodsDto();
+        dto.setId(this.id);
+        dto.setName(this.name);
+        dto.setDescription(this.description);
+        dto.setCustomAttributes(this.customAttributes);
+
+        List<FeatureDtoGet> features = new ArrayList<>(goodsFeature.size());
+        for (GoodsFeature gf : goodsFeature) {
+            FeatureDtoGet fdto = new FeatureDtoGet();
+            fdto.setName(gf.getFeature().getName());
+            fdto.setValue(gf.getValue());
+        }
+        dto.setFeatures(features);
+        return dto;
     }
 }

@@ -1,6 +1,6 @@
 package johny.dotsville.hello.web.controllers.exceptions;
 
-import johny.dotsville.hello.core.utils.exceptions.TechException;
+import johny.dotsville.hello.core.utils.exceptions.ApplicationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -12,8 +12,9 @@ import java.time.LocalDateTime;
 
 @ControllerAdvice
 public class WebExceptionHandler extends ResponseEntityExceptionHandler {
-    @ExceptionHandler(value = { TechException.class })
-    protected ResponseEntity<Object> handleExceptions(TechException ex, WebRequest request){
+    // TODO: сделать в исключениях поля под пользовательскую и админскую ошибки
+    @ExceptionHandler(value = { ApplicationException.class })
+    protected ResponseEntity<Object> handleExceptions(ApplicationException ex, WebRequest request){
         var response = new ExceptionResponse(ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<Object>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
