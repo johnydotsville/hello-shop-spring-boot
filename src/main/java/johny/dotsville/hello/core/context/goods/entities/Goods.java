@@ -5,6 +5,7 @@ import johny.dotsville.hello.core.context.goods.dto.FeatureDtoGet;
 import johny.dotsville.hello.core.context.goods.dto.GoodsDto;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.NotImplementedException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,20 +58,25 @@ public class Goods extends AbstractEntity {
         return Objects.equals(id, goods.id);
     }
 
-    public GoodsDto toDto() {
+    public static GoodsDto toDto(Goods goods) {
         GoodsDto dto = new GoodsDto();
-        dto.setId(this.id);
-        dto.setName(this.name);
-        dto.setDescription(this.description);
-        dto.setCustomAttributes(this.customAttributes);
+        dto.setId(goods.id);
+        dto.setName(goods.name);
+        dto.setDescription(goods.description);
+        dto.setCustomAttributes(goods.customAttributes);
 
-        List<FeatureDtoGet> features = new ArrayList<>(goodsFeature.size());
-        for (GoodsFeature gf : goodsFeature) {
+        List<FeatureDtoGet> features = new ArrayList<>(goods.getGoodsFeature().size());
+        for (GoodsFeature gf : goods.getGoodsFeature()) {
             FeatureDtoGet fdto = new FeatureDtoGet();
             fdto.setName(gf.getFeature().getName());
             fdto.setValue(gf.getValue());
+            features.add(fdto);
         }
         dto.setFeatures(features);
         return dto;
+    }
+
+    public static Goods fromDto(GoodsDto dto) {
+        throw new NotImplementedException("Создание Goods из Dto еще не сделано");
     }
 }

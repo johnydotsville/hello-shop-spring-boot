@@ -3,14 +3,15 @@ package johny.dotsville.hello.core.context.goods.serialization;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import johny.dotsville.hello.core.context.goods.entities.Goods;
+import johny.dotsville.hello.core.context.goods.dto.FeatureDtoGet;
+import johny.dotsville.hello.core.context.goods.dto.GoodsDto;
 import johny.dotsville.hello.core.context.goods.entities.GoodsFeature;
 
 import java.io.IOException;
 
-public class GoodsSerializer extends JsonSerializer<Goods> {
+public class GoodsDtoSerializer extends JsonSerializer<GoodsDto> {
     @Override
-    public void serialize(Goods goods, JsonGenerator generator, SerializerProvider serializerProvider)
+    public void serialize(GoodsDto goods, JsonGenerator generator, SerializerProvider serializerProvider)
             throws IOException {
         generator.writeStartObject();
         generator.writeNumberField("id", goods.getId());
@@ -20,13 +21,12 @@ public class GoodsSerializer extends JsonSerializer<Goods> {
 
         // Создание поля-массива объектов
         generator.writeArrayFieldStart("features");
-        for (GoodsFeature gf : goods.getGoodsFeature()) {
+        for (FeatureDtoGet feature : goods.getFeatures()) {
             generator.writeStartObject();
-            generator.writeStringField(gf.getFeature().getName(), gf.getValue());
+            generator.writeStringField(feature.getName(), feature.getValue());
             generator.writeEndObject();
         }
         generator.writeEndArray();
-
 
         generator.writeEndObject();
     }

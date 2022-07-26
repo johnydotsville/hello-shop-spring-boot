@@ -6,14 +6,14 @@ import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import johny.dotsville.hello.core.context.goods.entities.Goods;
+import johny.dotsville.hello.core.context.goods.dto.GoodsDto;
 import johny.dotsville.hello.core.utils.exceptions.TechException;
 
 import java.io.IOException;
 
-public class GoodsDeserializer extends JsonDeserializer<Goods> {
+public class GoodsDtoDeserializer extends JsonDeserializer<GoodsDto> {
     @Override
-    public Goods deserialize(JsonParser parser, DeserializationContext deserializationContext)
+    public GoodsDto deserialize(JsonParser parser, DeserializationContext deserializationContext)
             throws IOException, JacksonException {
         try {
             ObjectCodec codec = parser.getCodec();
@@ -23,14 +23,14 @@ public class GoodsDeserializer extends JsonDeserializer<Goods> {
             String description = node.get("description").asText();
             String customAttributes = node.get("custom_attributes").asText();
 
-            Goods goods = new Goods();
+            GoodsDto goods = new GoodsDto();
             goods.setName(name);
             goods.setDescription(description);
             goods.setCustomAttributes(customAttributes);
 
             return goods;
         } catch (Exception ex) {
-            throw new TechException("Не удалось сформировать объект " + Goods.class.getName());
+            throw new TechException("Не удалось сформировать объект " + GoodsDto.class.getName());
         }
     }
 }
