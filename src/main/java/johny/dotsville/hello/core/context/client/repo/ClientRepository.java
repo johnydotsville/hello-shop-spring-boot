@@ -1,6 +1,6 @@
-package johny.dotsville.hello.domain.repos;
+package johny.dotsville.hello.core.context.client.repo;
 
-import johny.dotsville.hello.domain.entities.client.Client;
+import johny.dotsville.hello.core.context.client.entities.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

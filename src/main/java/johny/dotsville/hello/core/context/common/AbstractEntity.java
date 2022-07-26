@@ -1,4 +1,4 @@
-package johny.dotsville.hello.domain.entities;
+package johny.dotsville.hello.core.context.common;
 
 import lombok.Getter;
 import lombok.Setter;

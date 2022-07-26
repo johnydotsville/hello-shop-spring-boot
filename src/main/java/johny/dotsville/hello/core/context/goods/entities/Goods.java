@@ -1,6 +1,6 @@
-package johny.dotsville.hello.domain.entities.goods;
+package johny.dotsville.hello.core.context.goods.entities;
 
-import johny.dotsville.hello.domain.entities.AbstractEntity;
+import johny.dotsville.hello.core.context.common.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 

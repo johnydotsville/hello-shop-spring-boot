@@ -1,6 +1,6 @@
 package johny.dotsville.hello.web.controllers.exceptions;
 
-import johny.dotsville.hello.domain.utils.exceptions.TechException;
+import johny.dotsville.hello.core.utils.exceptions.TechException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

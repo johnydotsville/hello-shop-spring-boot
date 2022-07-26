@@ -1,4 +1,4 @@
-package johny.dotsville.hello.domain.entities.goods.serialization;
+package johny.dotsville.hello.core.context.goods.serialization;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -6,8 +6,8 @@ import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import johny.dotsville.hello.domain.entities.goods.Goods;
-import johny.dotsville.hello.domain.utils.exceptions.TechException;
+import johny.dotsville.hello.core.context.goods.entities.Goods;
+import johny.dotsville.hello.core.utils.exceptions.TechException;
 
 import java.io.IOException;
 

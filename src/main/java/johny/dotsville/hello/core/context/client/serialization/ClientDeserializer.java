@@ -1,4 +1,4 @@
-package johny.dotsville.hello.domain.entities.client.serialization;
+package johny.dotsville.hello.core.context.client.serialization;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -6,9 +6,8 @@ import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import johny.dotsville.hello.domain.entities.client.Client;
-import johny.dotsville.hello.domain.utils.exceptions.DataException;
-import johny.dotsville.hello.domain.utils.exceptions.TechException;
+import johny.dotsville.hello.core.context.client.entities.Client;
+import johny.dotsville.hello.core.utils.exceptions.TechException;
 
 import java.io.IOException;
 import java.sql.Date;

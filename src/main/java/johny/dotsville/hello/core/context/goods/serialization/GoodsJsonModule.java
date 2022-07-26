@@ -1,7 +1,7 @@
-package johny.dotsville.hello.domain.entities.goods.serialization;
+package johny.dotsville.hello.core.context.goods.serialization;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import johny.dotsville.hello.domain.entities.goods.Goods;
+import johny.dotsville.hello.core.context.goods.entities.Goods;
 import org.springframework.stereotype.Service;
 
 @Service

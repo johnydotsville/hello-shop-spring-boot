@@ -1,6 +1,6 @@
-package johny.dotsville.hello.domain.repos;
+package johny.dotsville.hello.core.context.city.repo;
 
-import johny.dotsville.hello.domain.entities.city.City;
+import johny.dotsville.hello.core.context.city.entities.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

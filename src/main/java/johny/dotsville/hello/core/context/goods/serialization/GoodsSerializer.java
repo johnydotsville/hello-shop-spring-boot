@@ -1,10 +1,10 @@
-package johny.dotsville.hello.domain.entities.goods.serialization;
+package johny.dotsville.hello.core.context.goods.serialization;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import johny.dotsville.hello.domain.entities.goods.Goods;
-import johny.dotsville.hello.domain.entities.goods.GoodsFeature;
+import johny.dotsville.hello.core.context.goods.entities.Goods;
+import johny.dotsville.hello.core.context.goods.entities.GoodsFeature;
 
 import java.io.IOException;
 

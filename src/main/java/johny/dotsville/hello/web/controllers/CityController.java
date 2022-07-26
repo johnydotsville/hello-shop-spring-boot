@@ -1,7 +1,7 @@
 package johny.dotsville.hello.web.controllers;
 
-import johny.dotsville.hello.domain.entities.city.City;
-import johny.dotsville.hello.domain.repos.CityRepository;
+import johny.dotsville.hello.core.context.city.entities.City;
+import johny.dotsville.hello.core.context.city.repo.CityRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;

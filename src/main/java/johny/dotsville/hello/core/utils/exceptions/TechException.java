@@ -1,4 +1,4 @@
-package johny.dotsville.hello.domain.utils.exceptions;
+package johny.dotsville.hello.core.utils.exceptions;
 
 public class TechException extends ApplicationException {
     public TechException() { }

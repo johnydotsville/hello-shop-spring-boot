@@ -1,9 +1,9 @@
-package johny.dotsville.hello.domain.entities.client.serialization;
+package johny.dotsville.hello.core.context.client.serialization;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import johny.dotsville.hello.domain.entities.client.Client;
+import johny.dotsville.hello.core.context.client.entities.Client;
 
 import java.io.IOException;
 
