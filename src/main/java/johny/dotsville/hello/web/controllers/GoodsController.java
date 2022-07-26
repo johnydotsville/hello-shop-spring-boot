@@ -20,7 +20,7 @@ public class GoodsController {
 
     @GetMapping("/goods/{id}")
     public Goods findGoodsById(@PathVariable(name = "id") long id) {
-        java.util.Optional<Goods> goods = goodsRepo.findById(id);
+        Optional<Goods> goods = goodsRepo.findById(id);
         return goods.orElse(null);
     }
 }

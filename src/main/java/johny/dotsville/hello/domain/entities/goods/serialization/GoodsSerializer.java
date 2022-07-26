@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import johny.dotsville.hello.domain.entities.goods.Goods;
+import johny.dotsville.hello.domain.entities.goods.GoodsFeature;
 
 import java.io.IOException;
 
@@ -16,6 +17,17 @@ public class GoodsSerializer extends JsonSerializer<Goods> {
         generator.writeStringField("name", goods.getName());
         generator.writeStringField("description", goods.getDescription());
         generator.writeStringField("customAttributes", goods.getCustomAttributes());
+
+        // Создание поля-массива объектов
+        generator.writeArrayFieldStart("features");
+        for (GoodsFeature gf : goods.getGoodsFeature()) {
+            generator.writeStartObject();
+            generator.writeStringField(gf.getFeature().getName(), gf.getValue());
+            generator.writeEndObject();
+        }
+        generator.writeEndArray();
+
+
         generator.writeEndObject();
     }
 }
