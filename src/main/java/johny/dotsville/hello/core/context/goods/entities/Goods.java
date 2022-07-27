@@ -1,8 +1,9 @@
 package johny.dotsville.hello.core.context.goods.entities;
 
 import johny.dotsville.hello.core.common.entities.AbstractEntity;
-import johny.dotsville.hello.core.context.goods.dto.FeatureDtoGet;
+import johny.dotsville.hello.core.context.goods.dto.FeatureValueDto;
 import johny.dotsville.hello.core.context.goods.dto.GoodsDto;
+import johny.dotsville.hello.core.context.goods.dto.NewFeatureForGoodsDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.NotImplementedException;
@@ -20,10 +21,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
 @Table(name = "goods", schema = "bl")
+@Getter @Setter
 public class Goods extends AbstractEntity {
     @Id
     @Column(name = "id", insertable = false, updatable = false)
@@ -38,34 +41,47 @@ public class Goods extends AbstractEntity {
     private String description;
 
     @OneToMany(mappedBy = "goods", fetch = FetchType.LAZY)
-    private Set<GoodsFeature> goodsFeature = new HashSet<>();
+    private Set<GoodsFeature> goodsFeatures = new HashSet<>();
 
     @Column(name = "custom_attributes")
     // TODO: поискать, возможно ли из БД извлекать в словарь и обратно из словаря сохранять как строку
     private String customAttributes;
 
-    public long getId() {
-        return this.id;
-    }
-    public String getName() {
-        return this.name;
-    }
-    public String getDescription() {
-        return this.description;
-    }
-    public String getCustomAttributes() {
-        return this.customAttributes;
-    }
-    public List<FeatureDtoGet> getFeatures() {
-        var features = new ArrayList<FeatureDtoGet>(goodsFeature.size());
-        for (GoodsFeature gf: this.goodsFeature) {
-            var feature = new FeatureDtoGet();
+//    public long getId() {
+//        return this.id;
+//    }
+//    public String getName() {
+//        return this.name;
+//    }
+//    public String getDescription() {
+//        return this.description;
+//    }
+//    public String getCustomAttributes() {
+//        return this.customAttributes;
+//    }
+//    public Set<GoodsFeature> getGoodsFeature() {
+//        return this.goodsFeatures;
+//    }
+    public List<FeatureValueDto> getFeatures() {
+        var features = new ArrayList<FeatureValueDto>(goodsFeatures.size());
+        for (GoodsFeature gf: goodsFeatures) {
+            var feature = new FeatureValueDto();
             feature.setName(gf.getFeature().getName());
             feature.setValue(gf.getValue());
             features.add(feature);
         }
         return features;
     }
+//    public void addOrUpdateFeatures(List<NewFeatureForGoodsDto.FeatureDto> features) {
+//        for (NewFeatureForGoodsDto.FeatureDto feature : features) {
+//            Optional<GoodsFeature> gf = goodsFeatures.stream()
+//                    .filter(x -> x.getFeatureId() == feature.getId())
+//                    .findFirst();
+//            if (gf.isPresent()) {
+//                gf.get().setValue(feature.getValue());
+//            }
+//        }
+//    }
 
     @Override
     public int hashCode() {
@@ -90,7 +106,7 @@ public class Goods extends AbstractEntity {
         return dto;
     }
 
-    public static Goods fromDto(GoodsDto dto) {
-        throw new NotImplementedException("Создание Goods из Dto еще не сделано");
-    }
+//    public static Goods fromDto(GoodsDto dto) {
+//        throw new NotImplementedException("Создание Goods из Dto еще не сделано");
+//    }
 }

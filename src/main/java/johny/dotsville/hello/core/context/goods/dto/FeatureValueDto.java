@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class FeatureDtoGet {
+public class FeatureValueDto {
     private String name;
     private String value;
 }

@@ -1,6 +1,5 @@
 package johny.dotsville.hello.core.context.goods.dto;
 
-import johny.dotsville.hello.core.context.goods.entities.Feature;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,5 +11,5 @@ public class GoodsDto {
     private String name;
     private String description;
     private String customAttributes;
-    private List<FeatureDtoGet> features;
+    private List<FeatureValueDto> features;
 }

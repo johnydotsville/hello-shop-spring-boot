@@ -3,9 +3,8 @@ package johny.dotsville.hello.core.context.goods.serialization;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import johny.dotsville.hello.core.context.goods.dto.FeatureDtoGet;
+import johny.dotsville.hello.core.context.goods.dto.FeatureValueDto;
 import johny.dotsville.hello.core.context.goods.dto.GoodsDto;
-import johny.dotsville.hello.core.context.goods.entities.GoodsFeature;
 
 import java.io.IOException;
 
@@ -21,7 +20,7 @@ public class GoodsDtoSerializer extends JsonSerializer<GoodsDto> {
 
         // Создание поля-массива объектов
         generator.writeArrayFieldStart("features");
-        for (FeatureDtoGet feature : goods.getFeatures()) {
+        for (FeatureValueDto feature : goods.getFeatures()) {
             generator.writeStartObject();
             generator.writeStringField(feature.getName(), feature.getValue());
             generator.writeEndObject();
