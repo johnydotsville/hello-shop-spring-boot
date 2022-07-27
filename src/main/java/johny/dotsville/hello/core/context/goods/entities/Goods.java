@@ -3,10 +3,8 @@ package johny.dotsville.hello.core.context.goods.entities;
 import johny.dotsville.hello.core.common.entities.AbstractEntity;
 import johny.dotsville.hello.core.context.goods.dto.FeatureValueDto;
 import johny.dotsville.hello.core.context.goods.dto.GoodsDto;
-import johny.dotsville.hello.core.context.goods.dto.NewFeatureForGoodsDto;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.NotImplementedException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +19,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 
 @Entity

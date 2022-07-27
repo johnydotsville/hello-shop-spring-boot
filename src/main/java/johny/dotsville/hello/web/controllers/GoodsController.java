@@ -2,10 +2,7 @@ package johny.dotsville.hello.web.controllers;
 
 import johny.dotsville.hello.core.context.goods.dto.GoodsDto;
 import johny.dotsville.hello.core.context.goods.dto.GoodsFeatureDto;
-import johny.dotsville.hello.core.context.goods.dto.NewFeatureForGoodsDto;
-import johny.dotsville.hello.core.context.goods.entities.Feature;
 import johny.dotsville.hello.core.context.goods.entities.Goods;
-import johny.dotsville.hello.core.context.goods.repo.FeatureRepository;
 import johny.dotsville.hello.core.context.goods.repo.GoodsRepository;
 import johny.dotsville.hello.core.context.goods.service.GoodsService;
 import johny.dotsville.hello.core.utils.exceptions.DataException;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
